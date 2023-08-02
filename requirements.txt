@@ -1,2 +1,6 @@
 streamlit
 requests
+datetime
+numpy
+pandas
+json
