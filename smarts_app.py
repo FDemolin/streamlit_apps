@@ -9,18 +9,23 @@ def update_prices(df):
   for row in df.iterrows():
     new_values = f'''
     {{
-    "descricao":{row[1][1]}, 
+    "descricao":"{row[1][1]}", 
     "precoCusto":{row[1][3]},
     "precoVenda":{row[1][4]}
     }}
     '''
+    
     url_edit = f'https://api.egestor.com.br/api/v1/produtos/{row[1][0]}'
     r_edit = requests.put(url_edit, data=new_values, headers=headers)
     # st.write(r_edit.content)
+    #st.write(new_values)
+    #st.write(r_edit.status_code)
+    #st.write(r_edit.content)
     if r_edit.status_code != 200:
       st.write(f"Produto {row[1][1]}: Erro ao atualizar ❌")
     else:
       st.write(f"Produto {row[1][1]}: Atualizado com sucesso ✅")
+    
         
   return None
         
@@ -40,7 +45,7 @@ headers = {
 }
 
 st.title('Atualização de Descrição e Preços')
-st.markdown(':red[Atenção ao formato do arquivo, deve conter 5 colunas nessa ordem:] ')
+st.markdown(':red[**Atenção ao formato do arquivo, deve conter 5 colunas nessa ordem:**] ')
 st.text('Cod, Descricao, Categoria, Preço de Custo, Preço de Venda')
 df = st.file_uploader("Upload arquivo de preços", type="xlsx")
 
