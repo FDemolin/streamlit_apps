@@ -44,6 +44,8 @@ headers = {
   'Authorization': 'Bearer '+ access_token
 }
 
+st.warning("Don't let your app die! Renew your subscription until end of August!")
+
 st.title('Atualização de Descrição e Preços')
 st.markdown(':red[**Atenção ao formato do arquivo, deve conter 5 colunas nessa ordem:**] ')
 st.text('Cod, Descricao, Categoria, Preço de Custo, Preço de Venda')
